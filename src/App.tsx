@@ -1,7 +1,12 @@
 import { useState } from "react";
 
 function App() {
-  const [markDownContents, setMarkdownContents] = useState(<h1>Hello World!</h1>);
+  const [markDownContents, setMarkdownContents] = useState(
+    <>
+      <h1>Hello World!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quae numquam repellat excepturi velit in nobis ut porro, accusamus nostrum.</p>
+    </>
+  );
 
   return (
     <div className="bg-slate-800 text-white min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1">
@@ -15,12 +20,12 @@ function App() {
 
         <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl flex flex-col">
           <h2 className="font-bold text-2xl mb-5">Editor</h2>
-          <textarea id="editor" className="bg-slate-100 p-5 text-black rounded-md" value="Some default text"></textarea>
+          <textarea id="editor" className="bg-slate-50 p-5 text-black rounded-md" value="Some default text"></textarea>
         </div>
 
         <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl">
           <h2 className="font-bold text-2xl mb-5">Preview</h2>
-          <div id="preview" className="bg-slate-600 p-5 rounded-xl">
+          <div id="preview" className="bg-slate-600 p-5 rounded-xl prose prose-invert max-w-none">
             {markDownContents}
           </div>
         </div>
