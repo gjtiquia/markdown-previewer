@@ -1,12 +1,64 @@
+import { marked } from "marked";
 import { useState } from "react";
+import parse from "html-react-parser";
+
+const convertToMarkdownPreview = (text: string) => parse(marked.parse(text));
 
 function App() {
-  const [markDownContents, setMarkdownContents] = useState(
-    <>
-      <h1>Hello World!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni quae numquam repellat excepturi velit in nobis ut porro, accusamus nostrum.</p>
-    </>
-  );
+  const defaultText = `
+# Welcome to my React Markdown Previewer!
+
+## This is a sub-heading...
+### And here's some other cool stuff:
+
+Heres some code, \`<div></div>\`, between 2 backticks.
+
+\`\`\`
+// this is multi-line code:
+
+function anotherExample(firstLine, lastLine) {
+  if (firstLine == '\`\`\`' && lastLine == '\`\`\`') {
+    return multiLineCode;
+  }
+}
+\`\`\`
+
+You can also make text **bold**... whoa!
+Or _italic_.
+Or... wait for it... **_both!_**
+And feel free to go crazy ~~crossing stuff out~~.
+
+There's also [links](https://www.freecodecamp.org), and
+> Block Quotes!
+
+And if you want to get really crazy, even tables:
+
+Wild Header | Crazy Header | Another Header?
+------------ | ------------- | -------------
+Your content can | be here, and it | can be here....
+And here. | Okay. | I think we get it.
+
+- And of course there are lists.
+  - Some are bulleted.
+     - With different indentation levels.
+        - That look like this.
+
+
+1. And there are numbered lists too.
+1. Use just 1s if you want!
+1. And last but not least, let's not forget embedded images:
+
+![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
+
+  `;
+
+  const [userInput, setUserInput] = useState(defaultText);
+  const [markDownContents, setMarkdownContents] = useState(convertToMarkdownPreview(defaultText));
+
+  const onUserInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setUserInput(event.target.value);
+    setMarkdownContents(convertToMarkdownPreview(event.target.value));
+  };
 
   return (
     <div className="bg-slate-800 text-white min-h-screen grid grid-rows-[auto_1fr_auto] grid-cols-1">
@@ -20,7 +72,7 @@ function App() {
 
         <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl flex flex-col">
           <h2 className="font-bold text-2xl mb-5">Editor</h2>
-          <textarea id="editor" className="bg-slate-50 p-5 text-black rounded-md" value="Some default text"></textarea>
+          <textarea id="editor" className="bg-slate-50 p-5 text-black rounded-md h-60" value={userInput} onChange={onUserInput}></textarea>
         </div>
 
         <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl">
