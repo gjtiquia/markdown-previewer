@@ -67,12 +67,12 @@ And here. | Okay. | I think we get it.
 
       <main className="flex flex-col items-center gap-12">
 
-        <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl flex flex-col">
+        <div className="w-11/12 sm:w-9/12 bg-slate-700 px-8 py-8 rounded-2xl flex flex-col">
           <h2 className="font-bold text-2xl mb-5">Editor</h2>
           <textarea id="editor" className="bg-slate-50 p-5 text-black rounded-md h-60" value={userInput} onChange={onUserInput}></textarea>
         </div>
 
-        <div className="w-9/12 bg-slate-700 px-8 py-8 rounded-2xl">
+        <div className="w-11/12 sm:w-9/12 bg-slate-700 px-8 py-8 rounded-2xl">
           <h2 className="font-bold text-2xl mb-5">Preview</h2>
           <div id="preview" className="bg-slate-600 p-5 rounded-xl prose prose-invert max-w-none">
             {markDownContents}
