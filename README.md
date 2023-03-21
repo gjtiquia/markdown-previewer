@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# Markdown Previewer
+
+One of the required projects for the Front End Development Libraries certification from freeCodeCamp.  
+
+Hosted at https://markdown-previewer.gjtiquia.com/ 
+
+Link to project requirements: 
+https://www.freecodecamp.org/learn/front-end-development-libraries/front-end-development-libraries-projects/build-a-markdown-previewer
+
+## Create React App README
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

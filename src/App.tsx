@@ -85,8 +85,10 @@ And here. | Okay. | I think we get it.
 
       </main>
 
-      <footer>
-        <p>Footer</p>
+      <footer className="flex justify-end">
+        <a target="_blank" href="https://github.com/gjtiquia/markdown-previewer" className="p-3" rel="noreferrer">
+          <img alt="GitHub link" src='./github.svg' className="w-8"></img>
+        </a>
       </footer>
     </div>
   );
